@@ -3,8 +3,9 @@ import './css/common.css';
 import imgTemplate from './template/render-image-tpl'
 
 const refs = {
-    searchForm: document.querySelector('.search-form'),
-    galleryList: document.querySelector('.gallery')
+    searchForm: document.querySelector('.search-form input'),
+    galleryList: document.querySelector('.gallery'),
+    searchBtn: document.querySelector('.search-button')
 }
 
 console.log(refs.searchForm);
@@ -22,11 +23,11 @@ const options = {
 
 let query = '';
 
-refs.searchForm.addEventListener('submit', searchImg);
+refs.searchBtn.addEventListener('click', searchImg);
 
 function searchImg(e){
     e.preventDefault();
-    query = e.currentTarget.elements.query.value;
+    query = refs.searchForm.value;
     console.log(query);
 
     const url = `${BASE_URL}/?image_type=photo&orientation=horizontal&q=${query}&page=1&per_page=12&key=${API_KEY}`;

@@ -1,3 +1,6 @@
+body {
+  background-color: lightsteelblue;
+}
 ul,
 li {
   list-style: none;
@@ -13,23 +16,37 @@ p {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 20px;
   padding: 0;
   margin: 0;
   list-style: none;
-  max-width: calc(100vw - 100px);
+  max-width: calc(100vw - 80px);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
 }
 
-.search-form {
-  margin-bottom: 20px;
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.search-button {
+  width: 150px;
+  margin-left: 20px;
+
+  background-color: whitesmoke;
+  border-radius: 4px;
 }
 
 .stats {
   display: flex;
   align-items: center;
   text-align: center;
+}
+
+.material-icons {
+  color: whitesmoke;
 }
