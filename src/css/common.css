@@ -50,3 +50,13 @@ p {
 .material-icons {
   color: whitesmoke;
 }
+
+.button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 150px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+}

@@ -1,7 +1,7 @@
 export default function getRefs() {
     return {
-    searchForm: document.querySelector('.search-form input'),
     galleryList: document.querySelector('.gallery'),
-    searchForm: document.querySelector('.search-form')
+    searchForm: document.querySelector('.search-form'),
+    loadMoreBtn: document.querySelector('button[data-action="load-more"]'),
 }
 }
