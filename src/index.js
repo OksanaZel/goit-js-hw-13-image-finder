@@ -17,7 +17,7 @@ refs.searchForm.addEventListener('submit', onSearchImg);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
 refs.galleryList.addEventListener('click', onLightBoxOpen);
 
-refs.loadMoreBtn.classList.add('is-hidden');
+// refs.loadMoreBtn.classList.add('is-hidden');
 
 function onSearchImg(e){
   e.preventDefault();
@@ -38,41 +38,47 @@ function onSearchImg(e){
 
     onClearImgPage();
     onRenderImgPage(images);
+    
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // console.log(entry.target)
+          // onLoadMore()
+        }
+        observer.unobserve(entry.target);
+      })
+    }, options);
+
+    const arr = document.querySelectorAll('.gallery-list__item')
+
+    arr.forEach(item => {
+      console.log(item);
+      observer.observe(item);
+    })
+    
+  
   });
 
-  refs.loadMoreBtn.classList.remove('is-hidden');
+  // refs.loadMoreBtn.classList.remove('is-hidden');
 }
 
 
 function onLoadMore() {
   imagesApiService.fetchImages().then((images) => {
     onRenderImgPage(images);
-    // scroll();
+    scroll();
   });
 }
 
 function onRenderImgPage(images) {
   const markup = imgTemplate(images);
   refs.galleryList.insertAdjacentHTML('beforeend', markup);
-
-  const options = {
-    root: null,
-    rootMargin: '100px',
-    threshold: 0
-}
-const callback = function(entries, observer) {
-  entries.forEach(entry => {
-    console.log(entry.target);
-    })
-};
-
-const observer = new IntersectionObserver(callback, options);
-
-const targets = document.querySelectorAll('.gallery-list__item');
-
-targets.forEach(target => {
-  observer.observe(target);
-})
 }
 
 function onClearImgPage() {
@@ -90,5 +96,20 @@ function onLightBoxOpen(e){
   console.log(e.target.dataset.src);
 };
 
+// refs.galleryList.addEventListener()
 
 
+// const items = document.querySelectorAll('.gallery-list__item');
+// console.log(items);
+
+// refs.galleryListItem.forEach(item => {
+//   observer.observe(item);
+// })
+
+// observer.observe(refs.galleryList);
+
+// const targets = document.querySelectorAll('.gallery-list__item');
+
+// targets.forEach(target => {
+//   observer.observe(target);
+// })
