@@ -18,15 +18,12 @@ export default class ImagesApiService {
     }
 
     fetchImages() {
-        console.log(this);
         const url = `${BASE_URL}/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`;
         return fetch(url)
         .then(response => response.json())
-        .then(data => {
-            // const markup = imgTemplate(data.hits);
-            // refs.galleryList.insertAdjacentHTML('beforeend', markup);
-            console.log(data.hits)
-            this.page += 1;
+        .then(({hits}) => {
+            this.incrementPage();
+            return hits;
         })
       .catch(err => console.log(err));
     }

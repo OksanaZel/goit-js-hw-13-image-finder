@@ -1,6 +1,8 @@
 export default function getRefs() {
     return {
-    search: document.querySelector('#search'),
-    country: document.querySelector('.country'),
+        searchForm: document.querySelector('.search-form'),
+        galleryList: document.querySelector('.gallery'),
+        galleryListItem: document.querySelectorAll('.gallery-list__item'),
+        loadMoreBtn: document.querySelector('.button[data-action="load-more"]'),
 }
 }
