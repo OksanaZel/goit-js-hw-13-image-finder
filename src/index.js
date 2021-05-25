@@ -37,10 +37,13 @@ function onSearchImg(e){
     }
 
     onClearImgPage();
-    onRenderImgPage(images);
-    
+    onRenderImgPage(images);  
+  });
+
+  // refs.loadMoreBtn.classList.remove('is-hidden');
+}
+
     const options = {
-      root: null,
       rootMargin: '0px',
       threshold: 0
     };
@@ -48,26 +51,17 @@ function onSearchImg(e){
     const observer = new IntersectionObserver(function (entries, observer) {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // console.log(entry.target)
-          // onLoadMore()
+          console.log(entry)
+          // onLoadMore();
+          // observer.unobserve(entry.target);
         }
         observer.unobserve(entry.target);
       })
     }, options);
 
-    const arr = document.querySelectorAll('.gallery-list__item')
-
-    arr.forEach(item => {
-      console.log(item);
-      observer.observe(item);
-    })
-    
-  
-  });
-
-  // refs.loadMoreBtn.classList.remove('is-hidden');
-}
-
+    // const lastCard = document.querySelector('.gallery-list__item:last-child')
+    // console.log(lastCard);
+    // observer.observe(lastCard);
 
 function onLoadMore() {
   imagesApiService.fetchImages().then((images) => {
@@ -96,20 +90,3 @@ function onLightBoxOpen(e){
   console.log(e.target.dataset.src);
 };
 
-// refs.galleryList.addEventListener()
-
-
-// const items = document.querySelectorAll('.gallery-list__item');
-// console.log(items);
-
-// refs.galleryListItem.forEach(item => {
-//   observer.observe(item);
-// })
-
-// observer.observe(refs.galleryList);
-
-// const targets = document.querySelectorAll('.gallery-list__item');
-
-// targets.forEach(target => {
-//   observer.observe(target);
-// })

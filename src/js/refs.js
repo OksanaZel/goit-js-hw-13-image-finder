@@ -2,7 +2,7 @@ export default function getRefs() {
     return {
         searchForm: document.querySelector('.search-form'),
         galleryList: document.querySelector('.gallery'),
-        galleryListItem: document.querySelectorAll('.gallery-list__item'),
+        galleryListItem: document.querySelector('.gallery-list__item:last-child'),
         loadMoreBtn: document.querySelector('.button[data-action="load-more"]'),
 }
 }
