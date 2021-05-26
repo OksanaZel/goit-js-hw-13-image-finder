@@ -12,6 +12,8 @@ const refs = getRefs();
 
 const imagesApiService = new ImagesApiService();
 
+refs.loadMoreBtn.classList.add('is-hidden');
+
 const observerOptions = {
   root: null,
   rootMargin: '-10px',
@@ -23,13 +25,14 @@ refs.loadMoreBtn.addEventListener('click', onClickLoadMoreBtn);
 refs.galleryList.addEventListener('click', onLightBoxOpen);
 
 async function onSearchImg(e){
-    e.preventDefault();
-    refs.loadMoreBtn.classList.remove('is-hidden');
+  e.preventDefault();
+  refs.loadMoreBtn.classList.remove('is-hidden');
   
   imagesApiService.query = e.currentTarget.elements.query.value;
   
   if (!imagesApiService.query) {
     onShowInfoNotification();
+    refs.loadMoreBtn.classList.add('is-hidden');
     return;
   }
 
@@ -37,10 +40,12 @@ async function onSearchImg(e){
     const images = await imagesApiService.fetchImages();
       
     if (images.length === 0) {
-        onShowErrorNotification();
+      onShowErrorNotification();
+      refs.loadMoreBtn.classList.add('is-hidden');
         refs.searchForm.reset();
-    }
-
+  }
+  
+  
     onClearImgPage();
     onRenderImgPage(images);
 }
@@ -51,7 +56,7 @@ async function onLoadMore() {
 
     if (images.length === 0) {
       onShowNoticeNotification();
-      refs.loadMoreBtn.classList.add('is-hidden');
+      
     }
 }
 
@@ -65,6 +70,7 @@ function onClickLoadMoreBtn() {
 function onRenderImgPage(images) {
   const markup = imgTemplate(images);
   refs.galleryList.insertAdjacentHTML('beforeend', markup);
+  
 }
 
 function onClearImgPage() {
