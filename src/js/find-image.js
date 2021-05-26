@@ -22,8 +22,9 @@ refs.searchForm.addEventListener('submit', onSearchImg);
 refs.loadMoreBtn.addEventListener('click', onClickLoadMoreBtn);
 refs.galleryList.addEventListener('click', onLightBoxOpen);
 
-function onSearchImg(e){
-  e.preventDefault();
+async function onSearchImg(e){
+    e.preventDefault();
+    refs.loadMoreBtn.classList.remove('is-hidden');
   
   imagesApiService.query = e.currentTarget.elements.query.value;
   
@@ -32,27 +33,26 @@ function onSearchImg(e){
     return;
   }
 
-  imagesApiService.resetPage();
-  imagesApiService.fetchImages().then((images) => {
-
+    imagesApiService.resetPage();
+    const images = await imagesApiService.fetchImages();
+      
     if (images.length === 0) {
-      onShowErrorNotification();
+        onShowErrorNotification();
+        refs.searchForm.reset();
     }
 
     onClearImgPage();
     onRenderImgPage(images);
-  });
 }
 
-export function onLoadMore() {
-  imagesApiService.fetchImages().then((images) => {
+async function onLoadMore() {
+    const images = await imagesApiService.fetchImages();
     onRenderImgPage(images);
 
     if (images.length === 0) {
       onShowNoticeNotification();
       refs.loadMoreBtn.classList.add('is-hidden');
     }
-  });
 }
 
 function onClickLoadMoreBtn() {
