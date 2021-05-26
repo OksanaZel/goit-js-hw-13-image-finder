@@ -7,17 +7,22 @@ li {
 }
 
 img {
-  width: 100%;
+  width: 300px;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
 }
 
-p {
-  margin-right: 25px;
+.photo-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-gap: 10px;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -42,9 +47,16 @@ p {
 }
 
 .stats {
+  width: 300px;
   display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+}
+
+.stats-item {
+  padding-left: 15px;
+  margin-top: 3px;
+  margin-bottom: 10px;
 }
 
 .material-icons {
