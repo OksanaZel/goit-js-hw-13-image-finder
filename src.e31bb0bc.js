@@ -4379,6 +4379,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const refs = (0, _getRefs.default)();
 const imagesApiService = new _apiService.default();
+refs.loadMoreBtn.classList.add('is-hidden');
 const observerOptions = {
   root: null,
   rootMargin: '-10px',
@@ -4395,6 +4396,7 @@ async function onSearchImg(e) {
 
   if (!imagesApiService.query) {
     (0, _notification.onShowInfoNotification)();
+    refs.loadMoreBtn.classList.add('is-hidden');
     return;
   }
 
@@ -4403,6 +4405,7 @@ async function onSearchImg(e) {
 
   if (images.length === 0) {
     (0, _notification.onShowErrorNotification)();
+    refs.loadMoreBtn.classList.add('is-hidden');
     refs.searchForm.reset();
   }
 
@@ -4416,7 +4419,6 @@ async function onLoadMore() {
 
   if (images.length === 0) {
     (0, _notification.onShowNoticeNotification)();
-    refs.loadMoreBtn.classList.add('is-hidden');
   }
 }
 
@@ -4478,7 +4480,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50647" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60686" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
