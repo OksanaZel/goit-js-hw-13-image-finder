@@ -62,7 +62,8 @@ function onClickLoadMoreBtn() {
   scroll();
 
   const observer = new IntersectionObserver(onLoadMore, observerOptions);
-  observer.observe(refs.galleryList.lastElementChild);
+  // observer.observe(refs.galleryList.lastElementChild);
+  observer.observe(refs.loadMoreBtn);
   
  
 }
