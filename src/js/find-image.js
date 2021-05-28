@@ -40,7 +40,7 @@ async function onSearchImg(e){
     if (images.length === 0) {
       onShowErrorNotification();
       refs.loadMoreBtn.classList.add('is-hidden');
-        refs.searchForm.reset();
+      refs.searchForm.reset();
   }
   
   
@@ -54,7 +54,7 @@ async function onLoadMore() {
 
     if (images.length === 0) {
       onShowNoticeNotification();
-      
+      return
     }
 }
 
@@ -62,7 +62,9 @@ function onClickLoadMoreBtn() {
   scroll();
 
   const observer = new IntersectionObserver(onLoadMore, observerOptions);
-  observer.observe(refs.loadMoreBtn);
+  observer.observe(refs.galleryList.lastElementChild);
+  
+ 
 }
 
 function onRenderImgPage(images) {
