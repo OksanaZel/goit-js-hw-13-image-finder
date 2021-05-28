@@ -52,7 +52,7 @@ async function onSearchImg(e){
 
 async function onLoadMore() {
     const images = await imagesApiService.fetchImages();
-    onRenderImgPage(images);
+  onRenderImgPage(images);
 
     if (images.length === 0) {
       onShowNoticeNotification();
@@ -70,7 +70,6 @@ function onClickLoadMoreBtn() {
 function onRenderImgPage(images) {
   const markup = imgTemplate(images);
   refs.galleryList.insertAdjacentHTML('beforeend', markup);
-  
 }
 
 function onClearImgPage() {
