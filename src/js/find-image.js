@@ -54,7 +54,6 @@ async function onLoadMore() {
 
     if (images.length === 0) {
       onShowNoticeNotification();
-      return
     }
 }
 
@@ -62,10 +61,7 @@ function onClickLoadMoreBtn() {
   scroll();
 
   const observer = new IntersectionObserver(onLoadMore, observerOptions);
-  // observer.observe(refs.galleryList.lastElementChild);
   observer.observe(refs.loadMoreBtn);
-  
- 
 }
 
 function onRenderImgPage(images) {
