@@ -4,9 +4,7 @@ import getRefs from './get-refs';
 import imgTemplate from '../template/render-image-tpl';
 import { onShowInfoNotification, onShowErrorNotification, onShowNoticeNotification } from './notification';
 import { scroll } from './scroll';
-
-import * as basicLightbox from 'basiclightbox';
-import 'basiclightbox/dist/basicLightbox.min.css';
+import onLightBoxOpen from './light-box';
 
 const refs = getRefs();
 
@@ -75,11 +73,4 @@ function onRenderImgPage(images) {
 function onClearImgPage() {
   refs.galleryList.innerHTML = '';
 }
-
-function onLightBoxOpen(e){
-  if (e.target.nodeName !== 'IMG') {
-    return;
-  }
-  basicLightbox.create(`<img src="${e.target.dataset.src}">`).show();
-};
 
