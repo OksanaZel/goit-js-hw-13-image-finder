@@ -14,7 +14,7 @@ refs.loadMoreBtn.classList.add('is-hidden');
 
 const observerOptions = {
   root: null,
-  rootMargin: '-10px',
+  rootMargin: '100px',
   threshold: 0
 };
 
@@ -72,4 +72,3 @@ function onRenderImgPage(images) {
 function onClearImgPage() {
   refs.galleryList.innerHTML = '';
 }
-
